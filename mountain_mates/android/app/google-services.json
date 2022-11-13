@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "949264428418",
+    "project_id": "mountainmates-example",
+    "storage_bucket": "mountainmates-example.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949264428418:android:2e939dfeaf1c5ed568739b",
+        "android_client_info": {
+          "package_name": "com.example.mountain_mates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949264428418-ies2gfd8hudalthufpj789gjrs3udrgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA07b9goCb3PxTqZkV6f1bD9K9zD5QFeqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949264428418-ies2gfd8hudalthufpj789gjrs3udrgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

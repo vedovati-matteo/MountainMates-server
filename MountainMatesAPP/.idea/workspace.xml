@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9cb4ec4c-6aba-47ce-8b06-5afdfe385d82" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../mountain_mates/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../mountain_mates/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mountain_mates/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../mountain_mates/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mountain_mates/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../mountain_mates/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mountain_mates/lib/screens/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../mountain_mates/lib/screens/login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mountain_mates/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../mountain_mates/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mountain_mates/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../mountain_mates/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mountain_mates/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../mountain_mates/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="2HUmRtfT0vgpTpaMHSk1EJ4mcuG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mountain_mates" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9cb4ec4c-6aba-47ce-8b06-5afdfe385d82" name="Default Changelist" comment="" />
+      <created>1668348038999</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668348038999</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1668348063757">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="740" y="295" key="FileChooserDialogImpl/-1920.95.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1668348063757" />
+  </component>
+</project>
