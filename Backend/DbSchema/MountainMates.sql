@@ -52,13 +52,14 @@ CREATE TABLE "Utente" (
   PRIMARY KEY ("id_firebase")
 );
 
-CREATE TABLE "Utente_Escursione" (
-  "Utente_id_firebase" varchar(50),
-  "Escursione_id_escursione" int,
-  PRIMARY KEY ("Utente_id_firebase", "Escursione_id_escursione")
+CREATE TABLE "Utente_escursione" (
+  "id_firebase" varchar(50),
+  "id_escursione" int,
+  "stato" int,
+  "valutazione" int,
+  PRIMARY KEY ("id_firebase", "id_escursione")
 );
 
-ALTER TABLE "Utente_Escursione" ADD FOREIGN KEY ("Utente_id_firebase") REFERENCES "Utente" ("id_firebase");
+ALTER TABLE "Utente" ADD FOREIGN KEY ("id_firebase") REFERENCES "Utente_escursione" ("id_firebase");
 
-ALTER TABLE "Utente_Escursione" ADD FOREIGN KEY ("Escursione_id_escursione") REFERENCES "Escursione" ("id_escursione");
-
+ALTER TABLE "Escursione" ADD FOREIGN KEY ("id_escursione") REFERENCES "Utente_escursione" ("id_escursione");

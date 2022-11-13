@@ -57,5 +57,18 @@ Table Utente {
   Indexes {
     (id_firebase) [pk]
   }
-Ref: Utente.id_firebase <> Escursione.id_escursione
 }
+
+Table Utente_escursione {
+  id_firebase varchar(50)
+  id_escursione int
+  stato int 
+  valutazione int
+  Indexes {
+    (id_firebase, id_escursione) [pk]
+  }
+}
+
+Ref: Utente_escursione.id_firebase - Utente.id_firebase
+Ref: Utente_escursione.id_escursione - Escursione.id_escursione
+
