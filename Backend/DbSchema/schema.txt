@@ -21,7 +21,7 @@ Table Escursione_template {
 }
 
 Table Escursione {
-  id_escursione int
+  id_escursione int unique
   nome varchar(50)
   id_organizzatore varchar(50)
   data date
@@ -44,7 +44,7 @@ Table Escursione {
 }
 
 Table Utente {
-  id_firebase varchar(50)
+  id_firebase varchar(50) unique
   nome varchar(50)
   cognome varchar(50)
   nickname varchar(50)
@@ -60,8 +60,8 @@ Table Utente {
 }
 
 Table Utente_escursione {
-  id_firebase varchar(50)
-  id_escursione int
+  id_firebase varchar(50) unique
+  id_escursione int unique
   stato int 
   valutazione int
   Indexes {

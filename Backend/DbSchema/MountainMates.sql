@@ -18,7 +18,7 @@ CREATE TABLE "Escursione_template" (
 );
 
 CREATE TABLE "Escursione" (
-  "id_escursione" int,
+  "id_escursione" int UNIQUE,
   "nome" varchar(50),
   "id_organizzatore" varchar(50),
   "data" date,
@@ -39,7 +39,7 @@ CREATE TABLE "Escursione" (
 );
 
 CREATE TABLE "Utente" (
-  "id_firebase" varchar(50),
+  "id_firebase" varchar(50) UNIQUE,
   "nome" varchar(50),
   "cognome" varchar(50),
   "nickname" varchar(50),
@@ -53,7 +53,7 @@ CREATE TABLE "Utente" (
 );
 
 CREATE TABLE "Utente_escursione" (
-  "id_firebase" varchar(50),
+  "id_firebase" varchar(50) UNIQUE,
   "id_escursione" int,
   "stato" int,
   "valutazione" int,
