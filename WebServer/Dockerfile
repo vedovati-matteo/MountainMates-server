@@ -9,6 +9,3 @@ COPY . .
 
 # This is the command that runs the application in the container
 CMD flask --app mountainmates --debug run -h 0.0.0.0 -p 5000
-
-# BUILD IMAGE >> docker build --tag flask-docker .
-# RUN CONTAINER >> docker run -p 5000:5000 flask-docker
