@@ -8,4 +8,6 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # This is the command that runs the application in the container
-CMD flask --app mountainmates --debug run -h 0.0.0.0 -p 5000
+#CMD flask --app mountainmates --debug run -h 0.0.0.0 -p 5000
+CMD export FLASK_APP=app/main/__init__.py
+CMD python manage.py run
