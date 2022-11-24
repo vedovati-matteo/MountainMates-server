@@ -1,13 +1,14 @@
-from os import environ, path
+from os import environ, path, pardir
 from dotenv import load_dotenv
 
 # uncomment the line below for postgres database url from environment variable
 # postgres_local_base = environ.get('DATABASE_URL')
 #note postegers format: postgresql://username:password@host:port/database_name
 
-basedir = path.abspath(path.dirname(__file__))
+currdir = path.dirname(__file__)
+basedir = path.abspath(path.join(currdir, pardir))
 load_dotenv(path.join(basedir, '.env'))
-
+    
 class Config: # Base config
     SECRET_KEY = environ.get('SECRET_KEY')
 
