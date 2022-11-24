@@ -9,7 +9,7 @@ VOLUME /WebServer
 
 WORKDIR /WebServer
 
-ENV FLASK_APP=app/main/__init__.py
+ENV FLASK_APP=app/__init__.py
 
 # This is the command that runs the application in the container
 #CMD flask --app mountainmates --debug run -h 0.0.0.0 -p 5000

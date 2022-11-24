@@ -3,7 +3,7 @@ import unittest
 
 from flask.cli import FlaskGroup
 
-from app.main import create_app
+from app import create_app
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 

@@ -1,27 +1,29 @@
-import os
+from os import environ, path
+from dotenv import load_dotenv
 
 # uncomment the line below for postgres database url from environment variable
-# postgres_local_base = os.environ['DATABASE_URL']
+# postgres_local_base = environ.get('DATABASE_URL')
+#note postegers format: postgresql://username:password@host:port/database_name
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
 
-class Config:
-    SECRET_KEY = os.getenv('SECRET_KEY', 'my_precious_secret_key')
-    DEBUG = False
+class Config: # Base config
+    SECRET_KEY = environ.get('SECRET_KEY')
 
 
 class DevelopmentConfig(Config):
     # uncomment the line below to use postgres
     # SQLALCHEMY_DATABASE_URI = postgres_local_base
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'flask_boilerplate_main.db')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + path.join(basedir, 'database_main.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'flask_boilerplate_test.db')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + path.join(basedir, 'database_test.db')
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
