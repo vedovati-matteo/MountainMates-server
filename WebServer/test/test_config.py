@@ -8,7 +8,7 @@ from flask_testing import TestCase
 from manage import app
 from app.config import basedir
 
-def getEnvDic(dotenvPath):
+def getEnvDic(dotenvPath): # get dict of variables stored in the .env file
     with open(dotenvPath, 'r') as fh:
         vars_dict = dict(
             tuple(sub('\'', '', line).replace('\n', '').split('='))

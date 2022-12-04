@@ -1,11 +1,11 @@
 from flask_restx import Api
 
-from .user_api import api as api_user
+from .utente_api import api as api_utente
 
 api = Api(
-    title = '',
+    title = 'MountainMates',
     version = '0.0',
-    description=  'A description',
+    description=  'Descrizione ... ',
 )
 
-api.add_namespace(api_user)
+api.add_namespace(api_utente)
