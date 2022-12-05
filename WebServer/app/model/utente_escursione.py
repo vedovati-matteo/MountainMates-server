@@ -5,4 +5,4 @@ class Utente_Escursione(db.Model):
     id_firebase = db.Column(db.String(50), primary_key=True) 
     id_escursione = db.Column(db.Integer, primary_key=True)
     stato =  db.Column(db.Integer)
-    int =  db.Column(db.Integer)
+    valutazione =  db.Column(db.Integer)
