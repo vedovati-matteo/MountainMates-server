@@ -2,13 +2,9 @@ from flask import request
 from flask_restx import Namespace, Resource, fields
 from ..service.utente_escursione_service import get_all_iscrizioni
 
-api = Namespace('iscrizione', description='Azioni relative all\'iscrizione ad una Escursione')
+from .escursione_api import escursione_completa
 
-escursione = api.model('escursione', {
-    'id_escursione': fields.String(description='user Identifier'),
-    'stato': fields.Integer(description='number of friends'),
-    # TODO add other fields
-})
+api = Namespace('iscrizione', description='Azioni relative all\'iscrizione ad una Escursione')
 
 id_escursione = api.model('id_escursione', {
     'id_escursione': fields.String(description='user Identifier')
@@ -17,7 +13,7 @@ id_escursione = api.model('id_escursione', {
 @api.route('/')
 class Iscrizione(Resource):
     @api.doc('Ottieni la lista di tutte le iscrizioni dell\'utente')
-    @api.marshal_list_with(escursione)
+    @api.marshal_list_with(escursione_completa)
     @api.expect(None, validate = True)
     def get(self):
         """ Ottieni la lista di tutte le iscrizioni dell'utente """

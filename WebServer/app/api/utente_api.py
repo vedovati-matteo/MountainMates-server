@@ -41,10 +41,20 @@ class UtenteList(Resource):
         """ Aggungi al database un nuovo utente """
         return save_new_utente(data=request)
 
+@api.route('/<id_firebase>')
+@api.param('id_firebase', 'Identificatore firebase utente')
+class Utente(Resource):
+    @api.doc('Ottieni l\'utente specificato')
+    @api.marshal_with(utente)
+    @api.expect(None, validate = True)
+    def get(self, id_firebase):
+        """ Ottieni l'utente specificato """
+        return
+
 @api.route('/self')
 class UtenteSelf(Resource):
     @api.doc('Ottinei dati dell\'utente stesso')
-    @api.marshal_with(utente_create)
+    @api.marshal_with(utente)
     @api.expect(None, validate = True)
     def get(self):
         """ Ottine i dati dell'utente stesso """
