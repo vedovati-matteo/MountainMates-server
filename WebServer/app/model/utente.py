@@ -11,4 +11,4 @@ class Utente(db.Model):
     data_di_nascita  = db.Column(db.Date)
     numero_amici =  db.Column(db.Integer)
     livello_camminatore = db.Column(db.Integer)
-    img =db.Column(db.String(500)) 
+    img = db.Column(db.String(500)) 

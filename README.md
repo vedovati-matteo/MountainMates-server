@@ -1,2 +1,0 @@
-# Applicazione
-Flutter mobile application

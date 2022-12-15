@@ -5,7 +5,12 @@ def get_all_utenti(data):
     pass
 
 def save_new_utente(data):
-    pass
+    response_object = {
+        'status': 'prova',
+        'message': 'Questa è una prova',
+    }
+    return response_object, 200
 
 def get_utente_self(data):
-    pass
+    print("------ Trovato")
+    return "Va bene"
