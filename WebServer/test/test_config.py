@@ -5,7 +5,7 @@ from re import sub
 from flask import current_app
 from flask_testing import TestCase
 
-from app.manage import app
+from manage import app
 from app.config import basedir
 
 def getEnvDic(dotenvPath): # get dict of variables stored in the .env file
