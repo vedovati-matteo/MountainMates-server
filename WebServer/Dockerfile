@@ -15,4 +15,4 @@ ENV FLASK_APP=app/__init__.py
 #CMD flask --app mountainmates --debug run -h 0.0.0.0 -p 5000
 #CMD export FLASK_APP=app/main/__init__.py
 
-CMD python manage.py run -h 0.0.0.0
+CMD python manage.py run 
