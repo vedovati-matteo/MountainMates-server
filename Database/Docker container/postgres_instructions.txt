@@ -8,3 +8,11 @@ Istruzioni per installare il docker di postgres da terminale
 * per instalare la versione 14 di postgres (in generale una versione specifica di postgres): 
   docker run --name my-postgres-db -p 9000:5432 -e POSTGRES_PASSWORD=123456789  -e POSTGRES_USER=devopsroles  -e POSTGRES_DB=my-db -d postgres:14
   (reference: https://www.devopsroles.com/docker-run-postgresql/)
+
+
+
+docker run --name some-postgres -e POSTGRES_PASSWORD=pw -e -d -p 5432:5432 -e POSTGRES_DB=my-db postgres
+
+docker exec -it d6bf07581b39219850688afed95c995fafe92f466c0393a0a61b289ae3c3c2e8 bash
+psql -U postgres
+ * per accedere ai comandi di sql
