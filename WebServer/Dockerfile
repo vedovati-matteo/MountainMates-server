@@ -5,9 +5,11 @@ COPY requirements.txt requirements.txt
 # install the dependencies and packages in the requirements file
 RUN pip install -r requirements.txt
 
-VOLUME /WebServer
+#VOLUME /WebServer
 
-WORKDIR /WebServer
+#WORKDIR /WebServer
+
+COPY . .
 
 ENV FLASK_APP=app/__init__.py
 
