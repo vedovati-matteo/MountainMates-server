@@ -1,7 +1,7 @@
 from .. import db
 
 class EcursioneTemplate(db.Model):
-    __tablename__ = "EscursioneTemplate"
+    __tablename__ = "EcursioneTemplate"
     id_escursione_template = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50))
     provincia  = db.Column(db.String(2))
