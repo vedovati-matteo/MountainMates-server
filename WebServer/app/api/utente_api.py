@@ -1,7 +1,7 @@
 from flask import request
 from flask_restx import Namespace, Resource, fields
 from ..service.auth_service import token_required
-from ..service.utente_service import get_all_utenti, save_new_utente, get_utente_self 
+from ..service.utente_service import get_all_utenti, save_new_utente, get_utente_self, get_utente
 
 api = Namespace('utente', description='Azioni relative all\'utente')
 
@@ -40,7 +40,8 @@ class UtenteList(Resource):
     @api.expect(utente_create, validate = True)
     def post(self):
         """ Aggungi al database un nuovo utente """
-        return save_new_utente(data=request)
+        id_req = '2'
+        return save_new_utente(data=request.json, id_req=id_req)
 
 @api.route('/<id_firebase>')
 @api.param('id_firebase', 'Identificatore firebase utente')
@@ -50,7 +51,7 @@ class Utente(Resource):
     @api.expect(None, validate = True)
     def get(self, id_firebase):
         """ Ottieni l'utente specificato """
-        return
+        return get_utente(data=request, id=id_firebase)
 
 @api.route('/self')
 class UtenteSelf(Resource):
