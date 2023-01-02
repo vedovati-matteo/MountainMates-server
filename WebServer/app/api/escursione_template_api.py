@@ -1,7 +1,7 @@
 from flask import request
 from flask_restx import Namespace, Resource, fields
 
-from ..service.escursione_template_service import get_all_escursioni_template, save_new_escursione_template, get_escursione_self_template
+from ..service.escursione_template_service import get_all_escursioni_template, save_new_escursione_template
 
 
 api = Namespace('escursione_template', description='Azioni su Template')
