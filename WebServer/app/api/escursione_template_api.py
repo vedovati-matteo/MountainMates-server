@@ -37,7 +37,7 @@ class EscursioneTemplateList(Resource):
         """ Ottieni la lista di tutti i template di escursiono che sono nel database """
         return get_all_escursioni_template(data=request)
     
-    @api.doc('Creazione di un nuovo template')
+    @api.doc('Creazione di un nuovo template di un \' escursione')
     @api.expect(escursione_template_no_id, validate = True)
     def post(self):
         """ Aggungi al database un nuovo template """

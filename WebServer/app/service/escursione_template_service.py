@@ -1,15 +1,17 @@
 from .. import db
 from app.model.escursione_template import EcursioneTemplate
 from datetime import datetime
+import uuid
 
 def get_all_escursioni_template(data):
     return EcursioneTemplate.query.all()
 
-def save_new_escursione_template(data,  id_req):
+def save_new_escursione_template(data):
     escursione_template = escursione_template.query.filter_by(id_escursione_template=id_req).first()
     if not escursione_template:
+
         new_escursione_template = EcursioneTemplate(
-            id_escursione_template = id_req,
+            id_escursione_template = uuid.uuid1(),
             nome = data['nome'],
             provincia = data['provincia'],
             partenza = data['partenza'],
@@ -27,7 +29,7 @@ def save_new_escursione_template(data,  id_req):
         save_changes(new_escursione_template)
         response_object = {
             'status': 'successo',
-            'message': 'Utente registrato con successo',
+            'message': "template dell'escursione registrato con successo",
         }
         return response_object, 200 
     else:
