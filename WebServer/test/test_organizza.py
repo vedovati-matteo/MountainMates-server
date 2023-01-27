@@ -3,12 +3,12 @@ from unittest.mock import patch
 import json
 
 from app import db
-from app.model.utente_escursione import Utente_Escursione
+from app.model.organizza import Organizza
 from base import BaseTestCase
 
 @patch('firebase_admin.auth.verify_id_token')
-class TestUtente_Escursione(BaseTestCase):
-    def test_utente_escursione(self, mock_verify_id_token):
+class TestOrganizza(BaseTestCase):
+    def test_organizza(self, mock_verify_id_token):
         mock_verify_id_token.return_value = {'uid': '1'}
         payload1 = json.dumps({
             'nome': 'testName1',
@@ -43,43 +43,28 @@ class TestUtente_Escursione(BaseTestCase):
             response = client.post('/escursione/noTemplate', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload2)
             data = json.loads(response.get_data(as_text=True))
             id = data['id_escursione']
-            # Add iscrizione
+            # Add organizzatore
             payload3 = json.dumps({
                 'id_escursione': id
             })
-            response = client.post('/iscrizione/utente/self', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload3)
+            response = client.post('/organizza/utente/1', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload3)
             self.assertEqual(200, response.status_code)
-            iscrizione = Utente_Escursione.query.filter_by(id_firebase='1', id_escursione=id).first()
+            iscrizione = Organizza.query.filter_by(id_organizzatore='1', id_escursione=id).first()
             self.assertIsNotNone(iscrizione)
-            # Show lista iscrizioni utente self
-            response = client.get('/iscrizione/utente/self', headers={"Authorization": "Bearer tokenGiusto"})
+            # Show lista organizzazioni
+            response = client.get('/organizza/utente/1', headers={"Authorization": "Bearer tokenGiusto"})
             self.assertEqual(200, response.status_code)
             data = json.loads(response.get_data(as_text=True))
             self.assertEqual(1, len(data))
-            # Show lista iscrizioni utente 1
-            response = client.get('/iscrizione/utente/1', headers={"Authorization": "Bearer tokenGiusto"})
+            # Show list organizzatori escursione
+            response = client.get('/organizza/escursione/'+id, headers={"Authorization": "Bearer tokenGiusto"})
             self.assertEqual(200, response.status_code)
             data = json.loads(response.get_data(as_text=True))
             self.assertEqual(1, len(data))
-            # Show list iscrizioni escursione
-            response = client.get('/iscrizione/escursione/'+id, headers={"Authorization": "Bearer tokenGiusto"})
-            self.assertEqual(200, response.status_code)
-            data = json.loads(response.get_data(as_text=True))
-            self.assertEqual(1, len(data))
-            # Upadate iscrizione
-            payload4 = json.dumps({
-                'id_escursione': id,
-                'stato': 2,
-                'valutazione': 4
-            })
-            response = client.put('/iscrizione/utente/self', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload4)
-            self.assertEqual(200, response.status_code)
-            iscrizione = Utente_Escursione.query.filter_by(id_firebase='1', id_escursione=id).first()
-            self.assertEqual(2, iscrizione.stato)
             # Delete iscrizione
-            response = client.delete('/iscrizione/utente/self', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload3)
+            response = client.delete('/organizza/utente/1', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload3)
             self.assertEqual(200, response.status_code)
-            iscrizione = Utente_Escursione.query.filter_by(id_firebase='1', id_escursione=id).first()
+            iscrizione = Organizza.query.filter_by(id_organizzatore='1', id_escursione=id).first()
             self.assertIsNone(iscrizione)
         
 

@@ -1,8 +1,8 @@
 from .. import db
 
-class EcursioneTemplate(db.Model):
+class EscursioneTemplate(db.Model):
     __tablename__ = "EscursioneTemplate"
-    id_escursione_template = db.Column(db.Integer, primary_key=True)
+    id_escursione_template = db.Column(db.String(50), primary_key=True)
     nome = db.Column(db.String(50))
     provincia  = db.Column(db.String(2))
     partenza = db.Column(db.String(30))

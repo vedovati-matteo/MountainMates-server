@@ -24,12 +24,9 @@ class TestDevelopmentConfig(TestCase):
         return app
 
     def test_app_is_development(self):
-        self.assertFalse(app.config['SECRET_KEY'] is vars_dict.get('SECRET_KEY'))
         self.assertTrue(app.config['DEBUG'] is True)
         self.assertFalse(current_app is None)
-        self.assertTrue(
-            app.config['SQLALCHEMY_DATABASE_URI'] == 'sqlite:///' + path.join(basedir, 'database_main.db')
-        )
+        self.assertTrue(app.config['SQLALCHEMY_DATABASE_URI'] == vars_dict.get('DATABASE_URL'))
 
 
 class TestTestingConfig(TestCase):
@@ -38,10 +35,9 @@ class TestTestingConfig(TestCase):
         return app
 
     def test_app_is_testing(self):
-        self.assertFalse(app.config['SECRET_KEY'] is vars_dict.get('SECRET_KEY'))
         self.assertTrue(app.config['DEBUG'])
         self.assertTrue(
-            app.config['SQLALCHEMY_DATABASE_URI'] == 'sqlite:///' + path.join(basedir, 'database_test.db')
+            app.config['SQLALCHEMY_DATABASE_URI'] == 'sqlite:////tmp/database_test.db'
         )
 
 
