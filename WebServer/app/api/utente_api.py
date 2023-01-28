@@ -2,6 +2,7 @@ from flask import request
 from flask_restx import Namespace, Resource, fields
 from ..service.auth_service import token_required
 from ..service.utente_service import get_all_utenti, save_new_utente, get_utente, put_utente, delete_utente, get_amici_utente, add_amico, remove_amico, get_all_organizzatori
+from ..service.suggested_service import suggest_friends
 
 api = Namespace('utente', description='Azioni relative all\'utente')
 
@@ -136,4 +137,13 @@ class Organizzatori(Resource):
     def get(req_id, self):
         """ Ottieni la lista di tutti gli organizzatori registrati """
         return get_all_organizzatori()
-    
+
+@api.route('/suggestedFriends')
+class SuggestedFriends(Resource):
+    @api.doc('Lista degli utenti consigliati')
+    @api.marshal_list_with(utente)
+    @api.expect(None, validate = True)
+    @token_required
+    def get(req_id, self):
+        """ Lista degli utenti consigliati """
+        return suggest_friends(req_id)

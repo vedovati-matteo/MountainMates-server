@@ -5,6 +5,7 @@ import json
 from app.model.utente import Utente
 from app.model.amici import Amici
 from base import BaseTestCase
+from app.service.suggested_service import suggest_friends
 
 @patch('firebase_admin.auth.verify_id_token')
 class TestUtenteApi(BaseTestCase):
@@ -170,7 +171,53 @@ class TestUtenteApi(BaseTestCase):
             self.assertIsNone(amici)
             amici = Amici.query.filter_by(id_friend='1').first()
             self.assertIsNone(amici)
+    
+    def test_algo(self, mock_verify_id_token):
+        # Define payloads
+        payload1 = json.dumps({
+            'nome': 'testName1',
+            'cognome': 'testSurname1',
+            'data_di_nascita': '2022-12-15',
+            'nickname': 'testNick1',
+            'bio': 'testBio1',
+            'livello_camminatore': 1
+        })
         
+        with self.app.test_client() as client:
+            # Add users
+            mock_verify_id_token.return_value = {'uid': '1'}
+            client.post('/utente/', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload1)
+            mock_verify_id_token.return_value = {'uid': '2'}
+            client.post('/utente/', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload1)
+            mock_verify_id_token.return_value = {'uid': '3'}
+            client.post('/utente/', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload1)
+            mock_verify_id_token.return_value = {'uid': '4'}
+            client.post('/utente/', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload1)
+            mock_verify_id_token.return_value = {'uid': '5'}
+            client.post('/utente/', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload1)
+            # Befiends users
+            mock_verify_id_token.return_value = {'uid': '1'}
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '2'}))
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '5'}))
+            mock_verify_id_token.return_value = {'uid': '2'}
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '1'}))
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '4'}))
+            mock_verify_id_token.return_value = {'uid': '3'}
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '4'}))
+            mock_verify_id_token.return_value = {'uid': '4'}
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '3'}))
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '5'}))
+            mock_verify_id_token.return_value = {'uid': '5'}
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '1'}))
+            client.post('/utente/friendsSelf', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=json.dumps({'id_firebase': '3'}))
+            # try suggested firend
+            mock_verify_id_token.return_value = {'uid': '1'}
+            response = client.get('/utente/suggestedFriends', headers={"Authorization": "Bearer tokenGiusto"})
+            data = json.loads(response.get_data(as_text=True))
+            self.assertEqual(2, len(data))
+            self.assertEqual('3', data[0]['id_firebase'])
+            self.assertEqual('4', data[1]['id_firebase'])
+            
 
 if __name__ == '__main__':
     unittest.main()

@@ -9,8 +9,8 @@ from .escursione_template_api import api as api_escursione_template
 
 api = Api(
     title = 'MountainMates API',
-    version = '0.0',
-    description=  'Descrizione ... ', # TODO aggungere descrizione
+    version = '0.1',
+    description=  'Web Application di MountainMates', # TODO aggungere descrizione
 )
 
 api.add_namespace(api_utente)

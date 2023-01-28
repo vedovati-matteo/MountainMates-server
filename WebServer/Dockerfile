@@ -3,6 +3,7 @@ FROM python:3.11-alpine
 # copy the requirements file into the image
 COPY requirements.txt requirements.txt
 # install the dependencies and packages in the requirements file
+RUN pip3 install --extra-index-url https://alpine-wheels.github.io/index numpy
 RUN pip install -r requirements.txt
 
 VOLUME /WebServer
