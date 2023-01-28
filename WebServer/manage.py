@@ -1,5 +1,9 @@
+"""
+This module contains the main of the web app
+"""
 import os
 import unittest
+
 
 from flask.cli import FlaskGroup
 
@@ -11,6 +15,7 @@ app.app_context().push()
 
 cli = FlaskGroup(app)
 
+# Open the file in append mode
 @cli.command('test')
 def test():
     """Runs the unit tests."""
