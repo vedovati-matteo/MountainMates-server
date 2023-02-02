@@ -1,6 +1,6 @@
 from flask import request
 from flask_restx import Namespace, Resource, fields
-from ..service.auth_service import token_required
+from ..service.auth_service import token_required, organizzatore_required
 from ..service.escursione_service import get_all_escursioni, save_new_escursione, save_new_escursione_no_template, get_escursione, put_escursione, delete_escursione, get_all_escursioni_template
 
 from .escursione_template_api import escursione_template, escursione_template_no_id
@@ -46,6 +46,7 @@ class EscursioniList(Resource):
     @api.marshal_with(escursione_id)
     @api.expect(escursione_no_id, validate = True)
     @token_required
+    @organizzatore_required
     def post(req_id, self):
         """ Aggungi al database una nuova escursione """
         return save_new_escursione(data=request.json)
@@ -56,6 +57,7 @@ class EscursioniList(Resource):
     @api.marshal_with(escursione_id)
     @api.expect(escursione_completa_no_id, validate = True)
     @token_required
+    @organizzatore_required
     def post(req_id, self):
         """ Aggungi al database una nuova escursione e nuovo template (template non specificato) """
         return save_new_escursione_no_template(data=request.json)
@@ -74,13 +76,15 @@ class Escursione(Resource):
     @api.doc('Modifica l\'escursione specificata')
     @api.expect(escursione_no_id, validate = True)
     @token_required
+    @organizzatore_required
     def put(req_id, self, id_escursione):
-        """ Elimina l'escursione specificata """
+        """ Modifica l\'escursione specificata """
         return put_escursione(id=id_escursione, data=request.json)
     
     @api.doc('Elimina l\'escursione specificata')
     @api.expect(None, validate = True)
     @token_required
+    @organizzatore_required
     def delete(req_id, self, id_escursione):
         """ Elimina l'escursione specificata """
         return delete_escursione(id=id_escursione)

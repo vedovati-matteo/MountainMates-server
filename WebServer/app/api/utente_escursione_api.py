@@ -81,6 +81,6 @@ class Iscrizione(Resource):
     @api.expect(None, validate = True)
     @token_required
     def get(req_id, self, id_escursione):
-        """ Ottieni la lista di tutte le iscrizioni dell\'utente specificato """
+        """ Ottieni la lista di tutti gli utenti iscritti ad una escursione """
         return get_utenti(id=id_escursione)
     

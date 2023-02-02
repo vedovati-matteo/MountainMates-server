@@ -1,6 +1,6 @@
 from flask import request
 from flask_restx import Namespace, Resource, fields
-from ..service.auth_service import token_required
+from ..service.auth_service import token_required, organizzatore_required
 from ..service.escursione_template_service import get_all_escursioni_template, save_new_escursione_template, get_escursione_template, delete_escursione_template
 
 
@@ -46,6 +46,7 @@ class EscursioneTemplateList(Resource):
     @api.marshal_with(escursione_template_id)
     @api.expect(escursione_template_no_id, validate = True)
     @token_required
+    @organizzatore_required
     def post(req_id, self):
         """ Aggungi al database un nuovo template """
         return save_new_escursione_template(data=request.json)
@@ -65,6 +66,7 @@ class escursioneTemplate(Resource):
     @api.marshal_with(escursione_template)
     @api.expect(None, validate = True)
     @token_required
+    @organizzatore_required
     def delete(req_id, self, id_escursione_template):
         """ Cancella il template specificato, se non ha nessuna escursione connessa """
         return delete_escursione_template(id_escursione_template)

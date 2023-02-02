@@ -2,6 +2,7 @@
 from functools import wraps
 from flask import request, abort
 from firebase_admin import auth
+from app.model.utente import Utente
 
 def token_required(f):
     @wraps(f)
@@ -29,4 +30,16 @@ def check_token(token):
         # If the token is invalid or has expired, return an error
         return abort(401, str(e))
 
-# TODO implementare check per organizzatore
+
+def organizzatore_required(f):
+    @wraps(f)
+    def decorated(req_id, *args, **kwargs):
+        utente = Utente.query.filter_by(id_firebase=req_id).first()
+        if utente:
+            organizzatore = utente.flag_organizzatore
+            if organizzatore:
+                return f(req_id, *args, **kwargs)
+            else:
+                return abort(403, 'Utente non è organizzatore')
+        return abort(404, 'Utente non registrato')
+    return decorated

@@ -1,10 +1,12 @@
 import unittest
 from unittest.mock import patch
 import json
+from datetime import datetime
 
 from app import db
 from app.model.escursione import Escursione
 from app.model.escursione_template import EscursioneTemplate
+from app.model.utente import Utente
 from base import BaseTestCase
 
 @patch('firebase_admin.auth.verify_id_token')
@@ -33,6 +35,19 @@ class TestEscursione_template(BaseTestCase):
         
         
         with self.app.test_client() as client:
+            # Creazione utente come organizzatore
+            new_utente = Utente(
+                id_firebase='1',
+                nome = 'test1',
+                cognome = 'test1',
+                nickname = 't1',
+                data_di_nascita = datetime.strptime('2022-12-15', "%Y-%m-%d").date(),
+                bio = 'bio1',
+                livello_camminatore = 2,
+                flag_organizzatore = True
+            )
+            db.session.add(new_utente)
+            db.session.commit()
             # Add escursione 1 (no template)
             response = client.post('/escursione/noTemplate', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload1)
             self.assertEqual(200, response.status_code)

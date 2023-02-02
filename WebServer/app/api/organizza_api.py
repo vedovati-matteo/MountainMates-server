@@ -1,6 +1,6 @@
 from flask import request
 from flask_restx import Namespace, Resource, fields
-from ..service.auth_service import token_required
+from ..service.auth_service import token_required, organizzatore_required
 from ..service.organizza_service import get_escursioni, save_new_organizza, delete_organizza, get_organizzatori
 
 from .escursione_api import escursione_completa
@@ -26,6 +26,7 @@ class Iscrizione(Resource):
     @api.doc('Assegnazione escursione ad organizzatore')
     @api.expect(id_escursione, validate = True)
     @token_required
+    @organizzatore_required
     def post(req_id, self, id_organizzatore):
         """ Assegnazione escursione ad organizzatore """
         return save_new_organizza(id=id_organizzatore, data=request.json)
@@ -33,6 +34,7 @@ class Iscrizione(Resource):
     @api.doc('Rimozione escursione da organizzatore')
     @api.expect(id_escursione, validate = True)
     @token_required
+    @organizzatore_required
     def delete(req_id, self, id_organizzatore):
         """ Rimozione escursione da organizzatore """
         return delete_organizza(id=id_organizzatore, data=request.json)

@@ -1,6 +1,6 @@
 from flask import request
 from flask_restx import Namespace, Resource, fields
-from ..service.auth_service import token_required
+from ..service.auth_service import token_required, organizzatore_required
 from ..service.utente_service import get_all_utenti, save_new_utente, get_utente, put_utente, delete_utente, get_amici_utente, add_amico, remove_amico, get_all_organizzatori
 from ..service.suggested_service import suggest_friends
 

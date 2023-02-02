@@ -1,23 +1,17 @@
 import unittest
 from unittest.mock import patch
 import json
+from datetime import datetime
 
 from app import db
 from app.model.organizza import Organizza
+from app.model.utente import Utente
 from base import BaseTestCase
 
 @patch('firebase_admin.auth.verify_id_token')
 class TestOrganizza(BaseTestCase):
     def test_organizza(self, mock_verify_id_token):
         mock_verify_id_token.return_value = {'uid': '1'}
-        payload1 = json.dumps({
-            'nome': 'testName1',
-            'cognome': 'testSurname1',
-            'data_di_nascita': '2022-12-15',
-            'nickname': 'testNick1',
-            'bio': 'testBio1',
-            'livello_camminatore': 1
-        })
         payload2 = json.dumps({
             'nome': 'testNome',
             'provincia':'BG',
@@ -39,7 +33,20 @@ class TestOrganizza(BaseTestCase):
         
         with self.app.test_client() as client:
             # SetUp
-            client.post('/utente/', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload1)
+            # Creazione utente come organizzatore
+            new_utente = Utente(
+                id_firebase='1',
+                nome = 'test1',
+                cognome = 'test1',
+                nickname = 't1',
+                data_di_nascita = datetime.strptime('2022-12-15', "%Y-%m-%d").date(),
+                bio = 'bio1',
+                livello_camminatore = 2,
+                flag_organizzatore = True
+            )
+            db.session.add(new_utente)
+            db.session.commit()
+            
             response = client.post('/escursione/noTemplate', headers={"Content-Type": "application/json", "Authorization": "Bearer tokenGiusto"}, data=payload2)
             data = json.loads(response.get_data(as_text=True))
             id = data['id_escursione']
