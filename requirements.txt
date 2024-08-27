@@ -7,6 +7,7 @@ flask_testing==0.8.1
 python-dotenv==0.21.0
 gunicorn==20.0.4
 psycopg2-binary
-flask-firebase-admin
+flask-firebase-admin 
 firebase_admin
 sqlalchemy
+Werkzeug==2.2.2

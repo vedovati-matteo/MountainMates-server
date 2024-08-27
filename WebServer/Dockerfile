@@ -1,19 +1,20 @@
-# start by pulling the python image
+# Use an official Python runtime as a parent image
 FROM python:3.11-alpine
-# copy the requirements file into the image
-COPY requirements.txt requirements.txt
-# install the dependencies and packages in the requirements file
-RUN pip3 install --extra-index-url https://alpine-wheels.github.io/index numpy
-RUN pip install -r requirements.txt
 
-VOLUME /WebServer
+# Set the working directory to /app
+WORKDIR /app
 
-WORKDIR /WebServer
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-ENV FLASK_APP=app/__init__.py
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# This is the command that runs the application in the container
-#CMD flask --app mountainmates --debug run -h 0.0.0.0 -p 5000
-#CMD export FLASK_APP=app/main/__init__.py
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
 
-CMD python manage.py run -h 0.0.0.0
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "manage.py", "run", "-h", "0.0.0.0"]

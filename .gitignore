@@ -1,2 +1,3 @@
-WebServer/migrations/__pycache__/env.cpython-311.pyc
-WebServer/mountainmates-prova-firebase-adminsdk-nx3qa-c29fd7c82d.json
+.env
+WebServer/mountainmates-prova-firebase-adminsdk-nx3qa-db4807f40f.json
+WebServer/migrations/
