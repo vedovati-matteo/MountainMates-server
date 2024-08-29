@@ -86,6 +86,27 @@ If you need to run database migrations, you can use the following commands:
 
 - Access the Swagger UI documentation at `http://localhost:5000/api/doc/` when the server is running.
 - For static documentation, refer to the [swagger docs](https://vedovati-matteo.github.io/MountainMates_server/swagger.html).
+- To update or regenerate the static documentation, please refer to the README file inside the `static` folder for detailed instructions.
+
+## 🔑 Authentication Helper
+
+We provide a helper script `auth_token_getter.py` to simplify API testing without a frontend. This script allows you to obtain a Firebase ID token for a specific user, which you can then use to authenticate API requests.
+
+### Usage:
+
+Run the script with either a user's UID or email and password as arguments:
+
+```
+python auth_token_getter.py <user_uid>
+```
+or
+```
+python auth_token_getter.py <user_email> <user_password>
+```
+
+The script will output a Firebase ID token that you can use in your API requests.
+
+Note: This script is particularly useful for testing APIs in the Swagger UI (`/api/doc/`). You can use the generated token in the Swagger UI's "Authorize" feature to authenticate your requests.
 
 ## 🧪 Testing
 
