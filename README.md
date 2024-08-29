@@ -33,7 +33,7 @@ Welcome to MountainMates Server, the robust backend powering the MountainMates a
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/MountainMates_server.git
+   git clone https://github.com/vedovati-matteo/MountainMates_server.git
    cd MountainMates_server
    ```
 
