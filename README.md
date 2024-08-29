@@ -39,8 +39,9 @@ This Flask-based RESTful API powers the MountainMates web application, providing
 Execute within the app container: `docker-compose exec app python manage.py test`
 
 ## API Documentation
+Dynamic Swgger docs: Access the Swagger UI documentation at `http://localhost:5000/api/doc/` after running the application.
+[Static Swagger docs](https://vedovati-matteo.github.io/MountainMates_server/swagger.html).
 
-Access the Swagger UI documentation at `http://localhost:5000/api/doc/` after running the application.
 
 ## Running Tests
 
