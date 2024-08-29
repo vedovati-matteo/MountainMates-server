@@ -20,6 +20,3 @@ RUN chmod +x /app/entrypoint.sh
 
 # Use the entrypoint script as the command
 ENTRYPOINT ["/app/entrypoint.sh"] 
-
-# Run app.py when the container launches
-#CMD ["python", "manage.py", "run", "-h", "0.0.0.0"]

@@ -4,7 +4,7 @@ services:
   app:
     build: 
       context: ./WebServer
-      dockerfile: Dockerfile  # Specify the path to the Dockerfile
+      dockerfile: Dockerfile 
       args:
         BUILDKIT_PROGRESS: plain
     ports:
@@ -12,7 +12,7 @@ services:
     volumes:
       - ./WebServer:/app 
     env_file:
-      - .env  # Load environment variables from .env file
+      - .env
     environment:
       - FLASK_APP=app/__init__.py 
       - FLASK_ENV=development 
@@ -23,7 +23,7 @@ services:
   db:
     image: postgres:latest 
     env_file:
-      - .env  # Load environment variables from .env file
+      - .env 
     environment:
       - POSTGRES_DB=mountainmates_db 
       - POSTGRES_USER=postgres 
