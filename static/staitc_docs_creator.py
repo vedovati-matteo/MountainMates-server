@@ -1,5 +1,6 @@
 import json
 import requests
+import shutil
 
 def embed_swagger_json_in_existing_html(html_file_path, new_html_file_path, json_url = 'http://localhost:5000/api/swagger.json'):
     """
@@ -52,7 +53,9 @@ def embed_swagger_json_in_existing_html(html_file_path, new_html_file_path, json
         # Replace the existing script with the new one
         modified_html = html_content[:script_start] + new_script_content + html_content[script_end:]
 
-        with open(new_html_file_path, 'w', encoding='utf-8') as html_file:
+        shutil.copytree('MountainMates API_files', '../docs/MountainMates API_files')
+        
+        with open('../docs/' + new_html_file_path, 'w', encoding='utf-8') as html_file:
             html_file.write(modified_html)
 
         print(f"Successfully embedded swagger.json into {html_file_path}")
@@ -67,5 +70,5 @@ def embed_swagger_json_in_existing_html(html_file_path, new_html_file_path, json
 if __name__ == '__main__':
     # Example usage
     html_file_path = 'MountainMates API.html'
-    new_html_file_path = 'MountainMates API Embedded.html'
+    new_html_file_path = 'swagger.html'
     embed_swagger_json_in_existing_html(html_file_path, new_html_file_path)
