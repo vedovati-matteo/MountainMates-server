@@ -39,16 +39,14 @@ Welcome to MountainMates Server, the robust backend powering the MountainMates a
 
 2. Set up the necessary environment variables. You can either create a .env file in the project root or set the variables directly in your environment:
 
-- **Option 1**: using a `.env` file
-    Create a `.env` file in the project root and add the following  environment variables:
+- Option 1: Create a `.env` file in the project root and add the following  environment variables:
    ```
    FIREBASE_CREDENTIALS_PATH=<path/to/firebase_credential.json>
    FIREBASE_WEB_API_KEY=<firebase-web-api-key>
    POSTGRES_PASSWORD=mysecretpassword
    FLASK_DEBUG=0 # Set 0 for production and 1 for development
    ```
-- **Option 2**: Setting environment variables directly
-    Set the environment variables in your shell or environment configuration:
+- Option 2: Set the environment variables in your shell or environment configuration:
    ```
    export FIREBASE_CREDENTIALS_PATH=<path/to/firebase_credential.json>
    export FIREBASE_WEB_API_KEY=<firebase-web-api-key>
