@@ -15,8 +15,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
-# Define environment variable
-ENV NAME World
+# Entrypoint script to handle conditional server start
+RUN chmod +x /app/entrypoint.sh
+
+# Use the entrypoint script as the command
+ENTRYPOINT ["/app/entrypoint.sh"] 
 
 # Run app.py when the container launches
-CMD ["python", "manage.py", "run", "-h", "0.0.0.0"]
+#CMD ["python", "manage.py", "run", "-h", "0.0.0.0"]

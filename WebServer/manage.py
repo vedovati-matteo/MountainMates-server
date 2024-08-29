@@ -11,7 +11,7 @@ from flask.cli import FlaskGroup
 from app import create_app, db, migrate
 
 # Create the Flask app instance based on the environment variable or default to 'dev'
-app = create_app('development' if os.getenv('FLASK_DEBUG') == '1' else 'dev') 
+app = create_app('dev') 
 app.app_context().push()  # Push an application context to make `db` and `migrate` available
 
 # Create a FlaskGroup to manage CLI commands

@@ -3,8 +3,10 @@ version: '3.8'
 services:
   app:
     build: 
-      context: .  # Build context is the root directory
-      dockerfile: WebServer/Dockerfile  # Specify the path to the Dockerfile
+      context: ./WebServer
+      dockerfile: Dockerfile  # Specify the path to the Dockerfile
+      args:
+        BUILDKIT_PROGRESS: plain
     ports:
       - "5000:5000" 
     volumes:
