@@ -1,38 +1,43 @@
-from os import environ, path, pardir
+import os
 from dotenv import load_dotenv
 
+import logging
+# Configure Flask's logger
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
-currdir = path.dirname(__file__)
-basedir = path.abspath(path.join(currdir, pardir))
-load_dotenv(path.join(basedir, '.env'))
-    
-class Config: # Base config
+currdir = os.path.dirname(__file__)
+basedir = os.path.abspath(os.path.dirname(currdir))  # Go one level up from currdir
+load_dotenv(os.path.join(basedir, '.env')) 
+
+class Config:
+    """Base configuration class."""
     pass
 
 
 class DevelopmentConfig(Config):
-    # uncomment the line below to use postgres
-    # SQLALCHEMY_DATABASE_URI = postgres_local_base
+    """Development configuration."""
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class TestingConfig(Config):
+    """Testing configuration."""
     DEBUG = True
     TESTING = True
-    #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + path.join(basedir, 'database_test.db')
-    SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/database_test.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/database_test.db'  # In-memory SQLite for testing
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class ProductionConfig(Config):
+    """Production configuration."""
     DEBUG = False
-    # uncomment the line below to use postgres
-    # SQLALCHEMY_DATABASE_URI = postgres_local_base
+    # Add your production database URI here
 
 
+# Dictionary to map configuration names to their respective classes
 config_by_name = dict(
     dev=DevelopmentConfig,
     test=TestingConfig,

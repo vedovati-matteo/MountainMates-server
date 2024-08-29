@@ -1,0 +1,1476 @@
+{
+    "swagger": "2.0",
+    "basePath": "/api",
+    "paths": {
+        "/organize/trip/{trip_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Trip Identifier",
+                    "name": "trip_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20User"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all organizers for a trip",
+                "operationId": "Get a list of all organizers for a trip",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "organize"
+                ]
+            }
+        },
+        "/organize/user/{organizer_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Firebase User ID of the organizer",
+                    "name": "organizer_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Assign a trip to an organizer",
+                "operationId": "Assign a trip to an organizer",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20ID"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "organize"
+                ]
+            },
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20Trip"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all trips organized by the specified organizer",
+                "operationId": "Get a list of all trips organized by the specified organizer",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "organize"
+                ]
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Remove a trip from an organizer",
+                "operationId": "Remove a trip from an organizer",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20ID"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "organize"
+                ]
+            }
+        },
+        "/registration/trip/{trip_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Trip Identifier",
+                    "name": "trip_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20Trip%20User"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all users registered for a specific trip",
+                "operationId": "Get a list of all users registered for a specific trip",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "registration"
+                ]
+            }
+        },
+        "/registration/user/self": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Register the current user for a trip",
+                "operationId": "Register the current user for a trip",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20ID"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "registration"
+                ]
+            },
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20User%20Trip"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all trips the current user is registered for",
+                "operationId": "Get a list of all trips the current user is registered for",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "registration"
+                ]
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Cancel the current user's registration for a trip",
+                "operationId": "Cancel the current user's registration for a trip",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20ID"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "registration"
+                ]
+            },
+            "put": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Modify the current user's registration for a trip",
+                "operationId": "Modify the current user's registration for a trip",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Registration%20without%20ID"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "registration"
+                ]
+            }
+        },
+        "/registration/user/{firebase_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Firebase User ID",
+                    "name": "firebase_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20User%20Trip"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all trips a specific user is registered for",
+                "operationId": "Get a list of all trips a specific user is registered for",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "registration"
+                ]
+            }
+        },
+        "/trip/": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20ID"
+                        }
+                    }
+                },
+                "summary": "Add a new trip to the database",
+                "operationId": "Create a new trip",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20without%20ID"
+                        }
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip"
+                ]
+            },
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20Trip"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all trips in the database",
+                "operationId": "List all trips",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "trip"
+                ]
+            }
+        },
+        "/trip/fromTemplate/{trip_template_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Template Identifier",
+                    "name": "trip_template_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20Trip"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all trips based on a specific template",
+                "operationId": "Get a list of all trips from a specific template",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip"
+                ]
+            }
+        },
+        "/trip/noTemplate": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20ID"
+                        }
+                    }
+                },
+                "summary": "Add a new trip and a new template (template not specified) to the database",
+                "operationId": "Create a new trip and template",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Complete%20Trip%20without%20ID"
+                        }
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip"
+                ]
+            }
+        },
+        "/trip/{trip_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Trip Identifier",
+                    "name": "trip_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Complete%20Trip"
+                        }
+                    }
+                },
+                "summary": "Get the specified trip",
+                "operationId": "Get a specific trip",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip"
+                ]
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Delete the specified trip",
+                "operationId": "Delete the specified trip",
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip"
+                ]
+            },
+            "put": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Modify the specified trip",
+                "operationId": "Modify the specified trip",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20without%20ID"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip"
+                ]
+            }
+        },
+        "/trip_template/": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20Template%20ID"
+                        }
+                    }
+                },
+                "summary": "Add a new trip template to the database",
+                "operationId": "Create a new trip template",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Trip%20Template%20without%20ID"
+                        }
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip_template"
+                ]
+            },
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20Trip%20Template"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all trip templates in the database",
+                "operationId": "List all trip templates",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip_template"
+                ]
+            }
+        },
+        "/trip_template/{trip_template_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Trip Template Identifier",
+                    "name": "trip_template_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Complete%20Trip%20Template"
+                        }
+                    }
+                },
+                "summary": "Get the specified trip template",
+                "operationId": "Get a specific trip template",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip_template"
+                ]
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Delete the specified trip template if it has no associated trips",
+                "operationId": "Delete the specified trip template if it has no associated trips",
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "trip_template"
+                ]
+            }
+        },
+        "/user/": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Add a new user to the database",
+                "operationId": "Create a new user",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Create%20User"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            },
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20User"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all users in the database",
+                "operationId": "List all registered users",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/user/friends/self": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Add a friend for the current user",
+                "operationId": "Add a friend for the current user",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/User%20ID"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            },
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20User"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of the current user's friends",
+                "operationId": "Get a list of the current user's friends",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Remove a friend for the current user",
+                "operationId": "Remove a friend for the current user",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/User%20ID"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/user/friends/{firebase_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Firebase User ID",
+                    "name": "firebase_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20User"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of friends for the specified user",
+                "operationId": "Get a list of friends for the specified user",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/user/organizer": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20User"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of all registered organizers",
+                "operationId": "List all registered organizers",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/user/self": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Complete%20User"
+                        }
+                    }
+                },
+                "summary": "Get the current user's data",
+                "operationId": "Get the current user's data",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Delete the current user",
+                "operationId": "Delete the current user",
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            },
+            "put": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Update the current user's data",
+                "operationId": "Update the current user's data",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/User%20Self"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/user/suggestedFriends": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Complete%20User"
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a list of suggested friends for the current user",
+                "operationId": "Get a list of suggested friends for the current user",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/user/{firebase_id}": {
+            "parameters": [
+                {
+                    "in": "path",
+                    "description": "Firebase User ID",
+                    "name": "firebase_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Complete%20User"
+                        }
+                    }
+                },
+                "summary": "Get the specified user",
+                "operationId": "Get a specific user",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer Auth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "MountainMates API",
+        "version": "0.1",
+        "description": "This API facilitates hiking trips, participant registration, and trip organization."
+    },
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer Auth": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization"
+        }
+    },
+    "tags": [
+        {
+            "name": "user",
+            "description": "Actions related to users"
+        },
+        {
+            "name": "registration",
+            "description": "Actions related to trip registrations"
+        },
+        {
+            "name": "organize",
+            "description": "Actions related to trip organizers"
+        },
+        {
+            "name": "trip",
+            "description": "Actions on Trips"
+        },
+        {
+            "name": "trip_template",
+            "description": "Actions on Trip Templates"
+        }
+    ],
+    "definitions": {
+        "Create User": {
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "description": "User's first name"
+                },
+                "last_name": {
+                    "type": "string",
+                    "description": "User's last name"
+                },
+                "date_of_birth": {
+                    "type": "string",
+                    "description": "Date of birth in the format: YYYY-MM-DD"
+                },
+                "nickname": {
+                    "type": "string",
+                    "description": "User's nickname"
+                },
+                "bio": {
+                    "type": "string",
+                    "description": "User's bio"
+                },
+                "hiker_level": {
+                    "type": "integer",
+                    "description": "User's hiking ability level"
+                }
+            },
+            "type": "object"
+        },
+        "Complete User": {
+            "properties": {
+                "firebase_id": {
+                    "type": "string",
+                    "description": "User Identifier"
+                },
+                "first_name": {
+                    "type": "string",
+                    "description": "User's first name"
+                },
+                "last_name": {
+                    "type": "string",
+                    "description": "User's last name"
+                },
+                "date_of_birth": {
+                    "type": "string",
+                    "description": "Date of birth in the format: YYYY-MM-DD"
+                },
+                "nickname": {
+                    "type": "string",
+                    "description": "User's nickname"
+                },
+                "bio": {
+                    "type": "string",
+                    "description": "User's bio"
+                },
+                "is_organizer": {
+                    "type": "boolean",
+                    "description": "Indicates if the user is an organizer/mountain guide"
+                },
+                "hiker_level": {
+                    "type": "integer",
+                    "description": "User's hiking ability level"
+                },
+                "profile_picture": {
+                    "type": "string",
+                    "description": "User's profile picture URL"
+                }
+            },
+            "type": "object"
+        },
+        "User Self": {
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "description": "User's first name"
+                },
+                "last_name": {
+                    "type": "string",
+                    "description": "User's last name"
+                },
+                "date_of_birth": {
+                    "type": "string",
+                    "description": "Date of birth in the format: YYYY-MM-DD"
+                },
+                "nickname": {
+                    "type": "string",
+                    "description": "User's nickname"
+                },
+                "bio": {
+                    "type": "string",
+                    "description": "User's bio"
+                },
+                "hiker_level": {
+                    "type": "integer",
+                    "description": "User's hiking ability level"
+                },
+                "profile_picture": {
+                    "type": "string",
+                    "description": "User's profile picture URL"
+                }
+            },
+            "type": "object"
+        },
+        "User ID": {
+            "properties": {
+                "firebase_id": {
+                    "type": "string",
+                    "description": "User Identifier"
+                }
+            },
+            "type": "object"
+        },
+        "Trip ID": {
+            "properties": {
+                "trip_id": {
+                    "type": "string",
+                    "description": "Trip ID"
+                }
+            },
+            "type": "object"
+        },
+        "Registration without ID": {
+            "properties": {
+                "trip_id": {
+                    "type": "string",
+                    "description": "Trip ID"
+                },
+                "status": {
+                    "type": "integer",
+                    "description": "Registration status"
+                },
+                "rating": {
+                    "type": "integer",
+                    "description": "User's rating of the trip"
+                }
+            },
+            "type": "object"
+        },
+        "Complete User Trip": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Complete Trip"
+                },
+                {
+                    "properties": {
+                        "firebase_id": {
+                            "type": "string",
+                            "description": "ID of the registered user"
+                        },
+                        "status": {
+                            "type": "integer",
+                            "description": "Registration status"
+                        },
+                        "rating": {
+                            "type": "integer",
+                            "description": "User's rating of the trip"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Complete Trip": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Complete Trip Template"
+                },
+                {
+                    "properties": {
+                        "trip_id": {
+                            "type": "string",
+                            "description": "Trip ID"
+                        },
+                        "meeting_time": {
+                            "type": "string",
+                            "description": "Meeting time"
+                        },
+                        "date": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Date of the trip"
+                        },
+                        "max_participants": {
+                            "type": "integer",
+                            "description": "Maximum number of participants"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Complete Trip Template": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Trip Template without ID"
+                },
+                {
+                    "properties": {
+                        "trip_template_id": {
+                            "type": "string",
+                            "description": "Template ID"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Trip Template without ID": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Trip name"
+                },
+                "province": {
+                    "type": "string",
+                    "description": "Province of the trip"
+                },
+                "starting_point": {
+                    "type": "string",
+                    "description": "Starting point of the trip"
+                },
+                "map_link": {
+                    "type": "string",
+                    "description": "Link to the map"
+                },
+                "elevation_gain": {
+                    "type": "integer",
+                    "description": "Difference in altitude"
+                },
+                "distance": {
+                    "type": "number",
+                    "description": "Distance"
+                },
+                "estimated_time": {
+                    "type": "string",
+                    "description": "Estimated time of the trip"
+                },
+                "min_altitude": {
+                    "type": "integer",
+                    "description": "Minimum altitude"
+                },
+                "max_altitude": {
+                    "type": "integer",
+                    "description": "Maximum altitude"
+                },
+                "difficulty": {
+                    "type": "integer",
+                    "description": "Difficulty of the trip"
+                },
+                "required_tools": {
+                    "type": "string",
+                    "description": "Required tools"
+                },
+                "path_description": {
+                    "type": "string",
+                    "description": "Path description"
+                },
+                "image": {
+                    "type": "string",
+                    "description": "Picture of the trip"
+                }
+            },
+            "type": "object"
+        },
+        "Complete Trip User": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Complete User"
+                },
+                {
+                    "properties": {
+                        "trip_id": {
+                            "type": "string",
+                            "description": "Trip ID"
+                        },
+                        "status": {
+                            "type": "integer",
+                            "description": "Registration status"
+                        },
+                        "rating": {
+                            "type": "integer",
+                            "description": "User's rating of the trip"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Trip without ID": {
+            "properties": {
+                "trip_template_id": {
+                    "type": "string",
+                    "description": "Template ID"
+                },
+                "meeting_time": {
+                    "type": "string",
+                    "description": "Meeting time"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of the trip"
+                },
+                "max_participants": {
+                    "type": "integer",
+                    "description": "Maximum number of participants"
+                }
+            },
+            "type": "object"
+        },
+        "Complete Trip without ID": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Trip Template without ID"
+                },
+                {
+                    "properties": {
+                        "meeting_time": {
+                            "type": "string",
+                            "description": "Meeting time"
+                        },
+                        "date": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Date of the trip"
+                        },
+                        "max_participants": {
+                            "type": "integer",
+                            "description": "Maximum number of participants"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "Trip Template ID": {
+            "properties": {
+                "trip_template_id": {
+                    "type": "string",
+                    "description": "Template ID"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "responses": {
+        "ParseError": {
+            "description": "When a mask can't be parsed"
+        },
+        "MaskError": {
+            "description": "When any error occurs on mask"
+        }
+    }
+}
