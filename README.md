@@ -16,6 +16,8 @@ MountainMates follows a modern, distributed architecture designed for scalabilit
 
 ![System Architecture](docs/architecture.png)
 
+This architecture ensures a separation of concerns, allowing for easier maintenance and scalability of individual components as the application grows.
+
 ## 🛠️ Technologies
 
 - Flask: Web framework for building the API
