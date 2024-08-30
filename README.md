@@ -11,6 +11,11 @@ Welcome to MountainMates Server, the robust backend powering the MountainMates a
 - Firebase authentication integration
 - Swagger API documentation
 
+## 🏗️ System Architecture
+MountainMates follows a modern, distributed architecture designed for scalability and performance. Here's an overview of our system components and their interactions:
+
+![System Architecture](docs/architecture.png)
+
 ## 🛠️ Technologies
 
 - Flask: Web framework for building the API
@@ -37,29 +42,22 @@ Welcome to MountainMates Server, the robust backend powering the MountainMates a
    cd MountainMates_server
    ```
 
-2. Set up the necessary environment variables. You can either create a .env file in the project root or set the variables directly in your environment:
+2. Place your `firebase-credentials.json` file in the `/WebServer/` directory within the project
 
-- Option 1: Create a `.env` file in the project root and add the following  environment variables:
+3. Create a .env file in the project root and add the necessary environment variables:
    ```
-   FIREBASE_CREDENTIALS_PATH=<path/to/firebase_credential.json>
+   FIREBASE_CREDENTIALS_PATH=firebase_credential.json
    FIREBASE_WEB_API_KEY=<firebase-web-api-key>
    POSTGRES_PASSWORD=mysecretpassword
    FLASK_DEBUG=0 # Set 0 for production and 1 for development
    ```
-- Option 2: Set the environment variables in your shell or environment configuration:
-   ```
-   export FIREBASE_CREDENTIALS_PATH=<path/to/firebase_credential.json>
-   export FIREBASE_WEB_API_KEY=<firebase-web-api-key>
-   export POSTGRES_PASSWORD=mysecretpassword
-   export FLASK_DEBUG=0
-   ```
 
-3. Build and start the Docker containers:
+4. Build and start the Docker containers:
    ```
    docker-compose up --build
    ```
 
-4. The API will be available at `http://localhost:5000`
+5. The API will be available at `http://localhost:5000`
 
 ### Database Migrations
 
