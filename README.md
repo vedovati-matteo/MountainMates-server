@@ -1,11 +1,10 @@
 # MountainMates Server 🏔️
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Python](https://img.shields.io/badge/python-3.9-blue.svg)
 ![Flask](https://img.shields.io/badge/flask-2.0.1-lightgrey.svg)
 ![PostgreSQL](https://img.shields.io/badge/postgresql-13-blue.svg)
-![SQLAlchemy](https://img.shields.io/badge/sqlalchemy-1.4-red.svg)
 ![Docker](https://img.shields.io/badge/docker-20.10-blue.svg)
-![Firebase](https://img.shields.io/badge/firebase-9.0-orange.svg)
 
 Welcome to MountainMates Server, the robust backend powering the MountainMates application! This Flask-based API manages user accounts, hiking trips, and trip templates, making it easier than ever to organize and participate in hiking excursions.
 
