@@ -1,4 +1,4 @@
-
+# MountainMates Server 🏔️
 
 ![Python](https://img.shields.io/badge/python-3.9-blue.svg)
 ![Flask](https://img.shields.io/badge/flask-2.0.1-lightgrey.svg)
