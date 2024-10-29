@@ -89,7 +89,7 @@ If you need to run database migrations, you can use the following commands:
 ## 📚 API Documentation
 
 - Access the Swagger UI documentation at `http://localhost:5000/api/doc/` when the server is running.
-- For static documentation, refer to the [swagger docs](https://vedovati-matteo.github.io/MountainMates_server/swagger.html).
+- For static documentation, refer to the [swagger docs](https://vedovati-matteo.github.io/MountainMates-server/swagger.html).
 - To update or regenerate the static documentation, please refer to the README file inside the `static` folder for detailed instructions.
 
 ## 🔑 Authentication Helper
